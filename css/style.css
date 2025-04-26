@@ -1,0 +1,267 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header {
+  background-color: #2c3e50;
+  color: white;
+  padding: 1rem;
+  text-align: center;
+}
+
+header h1 {
+  margin-bottom: 0.5rem;
+}
+
+.filters {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.filters button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s;
+}
+
+.filters button.active {
+  background-color: #3498db;
+  color: white;
+}
+
+.filters button:not(.active) {
+  background-color: #ecf0f1;
+  color: #2c3e50;
+}
+
+.filters button:hover {
+  opacity: 0.9;
+}
+
+.map-container {
+  display: flex;
+  flex: 1;
+}
+
+#map {
+  flex: 2;
+  height: calc(100vh - 150px);
+}
+
+#info-panel {
+  flex: 1;
+  padding: 1rem;
+  background-color: white;
+  border-left: 1px solid #ddd;
+  overflow-y: auto;
+  max-width: 400px;
+}
+
+#info-panel h2 {
+  margin-bottom: 1rem;
+  color: #2c3e50;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 0.5rem;
+}
+
+#info-content {
+  line-height: 1.6;
+}
+
+.university-popup {
+  min-width: 200px;
+}
+
+.university-popup .name {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: #2c3e50;
+}
+
+.university-popup .status {
+  display: inline-block;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.university-popup .status[data-status="negeri"] {
+  background-color: #2980b9;
+  color: white;
+}
+
+.university-popup .status[data-status="swasta"] {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.university-popup .info {
+  margin: 0.3rem 0;
+  font-size: 0.9rem;
+}
+
+footer {
+  background-color: #2c3e50;
+  color: white;
+  text-align: center;
+  padding: 0.5rem;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  .map-container {
+      flex-direction: column;
+  }
+  
+  #info-panel {
+      max-width: 100%;
+      border-left: none;
+      border-top: 1px solid #ddd;
+  }
+}
+
+/* Legend Styles */
+#legend {
+  position: absolute;
+  bottom: 30px;
+  right: 20px;
+  background: white;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  z-index: 1000;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#legend h3 {
+  margin: 0 0 10px 0;
+  font-size: 16px;
+  color: #333;
+}
+
+#legend ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.legend-color {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  margin-right: 10px;
+  display: inline-block;
+}
+
+.negeri-color {
+  background-color: #2980b9;
+  border: 2px solid #1a5276;
+}
+
+.swasta-color {
+  background-color: #e74c3c;
+  border: 2px solid #c0392b;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  #legend {
+      position: relative;
+      bottom: auto;
+      right: auto;
+      margin: 15px;
+  }
+}
+
+/* LEGEND STYLES */
+#map-legend {
+  position: absolute;
+  bottom: 45px;
+  right: 5px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 12px 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  font-family: 'Segoe UI', sans-serif;
+  max-width: 180px;
+}
+
+.legend-title {
+  margin: 0 0 8px 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+}
+
+.legend-items {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.color-box {
+  width: 16px;
+  height: 16px;
+  border-radius: 3px;
+  display: inline-block;
+}
+
+.negeri {
+  background-color: #2980b9;
+  border: 2px solid #1a5276;
+}
+
+.swasta {
+  background-color: #e74c3c;
+  border: 2px solid #c0392b;
+}
+
+.label {
+  font-size: 13px;
+  color: #444;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  #map-legend {
+      bottom: 40px;
+      right: 10px;
+      padding: 10px 12px;
+      max-width: 160px;
+  }
+}
